@@ -1,0 +1,35 @@
+@use "mixins" as mixin;
+@use "variables" as var;
+
+.text-xs {
+    @include mixin.font-regular-12;
+}
+.text-sm {
+    @include mixin.font-regular-14;
+}
+.text-base {
+    @include mixin.font-regular-16;
+}
+.text-lg {
+    @include mixin.font-regular-18;
+}
+.text-xl {
+    @include mixin.font-regular-20;
+}
+.text-h1 {
+    @include mixin.font-h1;
+    @media (max-width: 470px) {
+        font-size: 3.8rem !important;
+        line-height: 4.2rem !important;
+    }
+}
+.text-h2 {
+    @include mixin.font-h2;
+}
+.text-h3 {
+    @include mixin.font-h3;
+}
+
+.text-danger {
+    color: var.$red-500 !important;
+}

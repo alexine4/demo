@@ -1,0 +1,39 @@
+image: node:22
+pipelines:
+  branches:
+    master:
+      - step:
+          name: Build app
+          caches:
+            - node
+          size: 2x
+          script: # The script below will build the application.
+            - npm install
+            - npm install -g @angular/cli@20.0.4
+            - npm run build:prerender
+          artifacts:
+            - dist/**
+      - step:
+          name: Deploy app
+          script: # The script below will deploy the application to the webserver.
+            - pipe: atlassian/aws-s3-deploy:2.1.0
+              variables:
+                AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+                AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+                AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+                S3_BUCKET: 'landing.snapauditai.ca'
+                LOCAL_PATH: 'dist/snap-audit-ai/browser'
+                DELETE_FLAG: 'true'
+                DEBUG: 'true'
+                EXTRA_ARGS: '--quiet'
+      - step:
+          name: Clear cache
+          deployment: Production
+          script:
+            - pipe: atlassian/aws-cloudfront-invalidate:0.1.1
+              variables:
+                AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+                AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+                AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+                DISTRIBUTION_ID: $AWS_DISTRIBUTION_ID
+

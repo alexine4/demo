@@ -1,0 +1,143 @@
+@use "@angular/material" as mat;
+@use "mixins" as mixin;
+@use "variables" as var;
+
+// Customize the entire app. Change :root to your selector if you want to scope the styles.
+:root {
+  @include mat.select-overrides(
+    (
+      trigger-text-font: HelveticaNeue,
+      trigger-text-size: 14px,
+      trigger-text-weight: 500,
+      container-elevation-shadow: var(--page-shadow),
+      panel-background-color: var(--page-bg),
+      enabled-trigger-text-color: var(--secondary-color),
+      disabled-trigger-text-color: var(--secondary-color),
+      placeholder-text-color: var(--placeholder-color),
+      enabled-arrow-color: var(--secondary-color),
+      disabled-arrow-color: var(--secondary-color),
+      focused-arrow-color: var(--primary-color)
+    )
+  );
+}
+
+:root {
+  @include mat.option-overrides(
+    (
+      label-text-color: var(--secondary-color),
+      label-text-font: HelveticaNeue,
+      label-text-size: 14px,
+      label-text-weight: 500,
+      selected-state-layer-color: var(--bg-color-primary),
+      selected-state-label-text-color: var(--tertiary-color),
+      hover-state-layer-color: var(--bg-hover-color-primary)
+    )
+  );
+}
+mat-pseudo-checkbox.mat-pseudo-checkbox-checked {
+  background-color: var(--btn-bg-color-primary) !important;
+  .mat-pseudo-checkbox-full.mat-pseudo-checkbox-checked::after,
+  .mat-pseudo-checkbox-full.mat-pseudo-checkbox-indeterminate::after {
+    color: var(--secondary-color);
+  }
+}
+
+.mat-mdc-select-panel {
+  border-radius: var.$input-option-list-radius !important;
+  border: 1px solid var(--border-color);
+
+  .mat-mdc-option {
+    position: relative;
+
+    &:hover {
+      background-color: var(--bg-hover-color-primary) !important;
+    }
+    &.mdc-list-item--selected:not(.mat-mdc-option-multiple) {
+      background-color: var(--bg-color-primary) !important;
+      position: relative;
+
+      mat-pseudo-checkbox {
+        display: none;
+      }
+
+      &::after {
+        content: "✓";
+        position: absolute;
+        right: 16px;
+        color: var(--primary-color);
+        font-weight: bold;
+        font-size: 16px;
+      }
+    }
+
+    /* Support single-selection: when option has aria-selected=\"true\" add same checkmark */
+    /*     &[aria-selected="true"]::after {
+      content: "✓";
+      position: absolute;
+      right: 16px;
+      color: var(--primary-color);
+      font-weight: bold;
+      font-size: 16px;
+    } */
+
+    &:active {
+      background-color: var(--bg-color-primary) !important;
+    }
+
+    .mdc-list-item__primary-text {
+      white-space: nowrap !important;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 18px !important;
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+mat-select {
+  @include mixin.font-medium-14;
+  border: 1px solid var(--border-color);
+  border-radius: var.$input-radius;
+  display: flex;
+  align-items: center;
+
+  .mat-mdc-select-trigger {
+    padding: 0 15px;
+  }
+
+  .mat-mdc-select-arrow-wrapper {
+    -webkit-mask-image: url("public/assets/arrow-down-icon.svg") !important;
+    mask-image: url("public/assets/arrow-down-icon.svg") !important;
+    -webkit-mask-size: 20px 20px;
+    mask-size: 20px 20px;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+
+    background-color: var(--tertiary-color);
+    background-image: none !important;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+
+    svg {
+      display: none;
+    }
+  }
+}
+
+.mat-mdc-select-placeholder {
+  font-weight: 500;
+}
+app-select-field .small {
+  @include mixin.font-medium-12;
+  padding: 0;
+
+  .mat-mdc-select-arrow-wrapper {
+    background-size: 14px 14px;
+    width: 14px;
+    height: 14px;
+  }
+}

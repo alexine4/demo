@@ -1,0 +1,287 @@
+@use "variables" as var;
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+
+    backdrop-filter: blur(10px);
+    box-shadow: 0 1px 0 0 rgba(18, 18, 18, 0.16);
+
+    transition: all 0.3s ease;
+    height: var.$header-height;
+    margin-bottom: 1.8rem;
+
+    .nav {
+        height: 100%;
+        padding: 0 2.4rem;
+
+        .nav-container {
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 144rem;
+            margin: 0 auto;
+            .logo {
+                img {
+                    width: 13.6rem;
+                    height: 3.2rem;
+                }
+            }
+
+            .nav-menu {
+                display: flex;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                gap: 0.8rem;
+                height: 100%;
+
+                .nav-item {
+                    height: 100%;
+                    .nav-link {
+                        height: 100%;
+                        padding: 0.75rem 1.5rem;
+                        border: none;
+                        background: transparent;
+                        color: var.$secondary;
+
+                        cursor: pointer;
+                        border-radius: 0.5rem;
+                        transition: all 0.3s ease;
+                        position: relative;
+
+                        &:hover {
+                            color: var.$primary;
+                            background-color: rgba(37, 99, 235, 0.05);
+                        }
+
+                        &.active {
+                            color: var.$primary;
+                            background-color: rgba(37, 99, 235, 0.1);
+
+                            box-shadow: 0 -2px 0 0 inset rgba(0, 128, 255, 1);
+                        }
+
+                        &:focus {
+                            outline: none;
+                        }
+                    }
+                }
+            }
+
+            // Burger menu button (hidden on desktop)
+            .burger-btn {
+                display: none;
+                flex-direction: column;
+                justify-content: space-around;
+                width: 2.4rem;
+                height: 2.4rem;
+                background: transparent;
+                border: none;
+                cursor: pointer;
+
+                .burger-line {
+                    width: 100%;
+                    height: 2px;
+                    background-color: var.$secondary;
+                    transition: all 0.3s ease;
+                    border-radius: 1px;
+                }
+
+                &.active {
+                    .burger-line:nth-child(1) {
+                        transform: rotate(45deg) translate(5px, 5px);
+                    }
+                    .burger-line:nth-child(2) {
+                        opacity: 0;
+                    }
+                    .burger-line:nth-child(3) {
+                        transform: rotate(-45deg) translate(7px, -6px);
+                    }
+                }
+            }
+        }
+        .desktop-action {
+            display: flex;
+            flex-direction: row;
+            gap: 12px;
+            a {
+                padding: 6px 16px !important;
+                border-radius: 32px !important;
+            }
+        }
+    }
+    // Mobile menu (hidden by default)
+    .mobile-menu {
+        display: none;
+    }
+}
+
+// Mobile responsiveness
+@media (max-width: 768px) {
+    .header {
+        .nav {
+            padding: 0 1rem;
+
+            .nav-container {
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 0;
+                gap: 0;
+
+                // Hide desktop menu
+                .desktop-menu {
+                    display: none;
+                }
+
+                .desktop-action {
+                    display: none;
+                }
+
+                // Show burger button
+                .burger-btn {
+                    display: flex;
+                }
+            }
+
+            // Mobile menu styles
+            .mobile-menu {
+                display: block;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 1);
+                backdrop-filter: blur(10px);
+                border-top: 1px solid rgba(18, 18, 18, 0.16);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                z-index: 999;
+
+                &.open {
+                    transform: translateY(0);
+                    opacity: 1;
+                    visibility: visible;
+                }
+
+                .mobile-nav-menu {
+                    list-style: none;
+                    margin: 0;
+                    padding: 2rem 1rem;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+
+                    .mobile-nav-item {
+                        .mobile-nav-link {
+                            display: block;
+                            width: 100%;
+                            padding: 1rem 1.5rem;
+                            border: none;
+                            background: transparent;
+                            color: var.$secondary;
+                            text-align: left;
+                            font-size: 1.6rem;
+                            cursor: pointer;
+                            border-radius: 0.5rem;
+                            transition: all 0.3s ease;
+
+                            &:hover {
+                                color: var.$primary;
+                                background-color: rgba(37, 99, 235, 0.05);
+                            }
+
+                            &.active {
+                                color: var.$primary;
+                                background-color: rgba(37, 99, 235, 0.1);
+                            }
+
+                            &:focus {
+                                outline: none;
+                            }
+                        }
+
+                        &.mobile-action {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 12px;
+                            margin-top: 1rem;
+                            padding-top: 1rem;
+                            border-top: 1px solid rgba(18, 18, 18, 0.16);
+
+                            .mobile-get-started {
+                                display: block;
+                                width: 100%;
+                                padding: 1rem 1.5rem;
+                                text-decoration: none;
+                                text-align: center;
+                                border-radius: 0.5rem;
+                                transition: all 0.3s ease;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Hide mobile-only elements on desktop
+    .mobile-only {
+        display: none;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-only {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        .nav {
+            .nav-container {
+                .nav-menu {
+                    .nav-item {
+                        .nav-link {
+                            padding: 0.5rem 0.75rem;
+                            font-size: 1.6rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Smooth scroll behavior
+html {
+    scroll-behavior: smooth;
+}
+
+// Add padding to body to account for fixed header
+body {
+    padding-top: 80px; // Adjust based on your header height
+}
+
+// Animation for active state changes
+.nav-link {
+    &.active::after {
+        animation: slideIn 0.3s ease-out;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        width: 0;
+    }
+    to {
+        width: 80%;
+    }
+}

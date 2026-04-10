@@ -1,0 +1,63 @@
+@use "breakpoints" as breakpoint;
+@use "variables" as var;
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+
+  @media (min-width: 671px) {
+    height: 100vh;
+  }
+
+  .wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: var.$background-color;
+
+    @media (min-width: 671px) {
+      height: 100%;
+    }
+
+    app-header {
+      display: block;
+      color: var.$secondary;
+      background-color: var.$white;
+      padding-bottom: 0.8rem;
+    }
+
+    .content {
+      flex: 1;
+      margin-top: var.$header-height;
+      padding: 1.6rem 0rem;
+      color: var.$secondary;
+      overflow: hidden;
+      overflow-y: auto;
+
+      @media (min-width: 671px) {
+        height: calc(100vh - #{var.$header-height} - #{var.$footer-height} - 1.8rem);
+      }
+
+      @media (max-width: 670px) {
+        min-height: calc(100vh - #{var.$header-height} - 10rem);
+        overflow: visible;
+      }
+
+      @media (max-width: 540px) and (min-width: 671px) {
+        height: calc(100vh - #{var.$header-height} - #{var.$footer-height} - 2.9rem);
+      }
+    }
+
+    app-footer {
+      display: block;
+      color: var.$secondary;
+      background-color: var.$white;
+
+      @media (max-width: 670px) {
+        position: static;
+        margin-top: auto;
+      }
+    }
+  }
+}

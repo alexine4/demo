@@ -1,0 +1,93 @@
+$black: #010101;
+$white: #fff;
+
+$color-100: #f6f6f6;
+$color-50: #14141414;
+
+$red-500: #bf240f;
+$green-50: #dcfce7;
+$green-25: #e6ffef75;
+$green-100: #bbf7d0;
+$green-500: #166534;
+$red-25: #ffe8e673;
+$red-50: #fecaca;
+$red-100: #fca5a5;
+$red-600: #991b1b;
+
+$orange-100: rgb(255, 245, 217);
+$orange-50: rgb(151, 117, 22);
+$orange-700: #db8215;
+
+$grey-25: #fafafa;
+$grey-50: #f6f6f6;
+$grey-100: #ffffff;
+
+$dark-4: rgba(0, 10, 20, 0.04);
+$dark-8: rgba(0, 10, 20, 0.08);
+$dark-16: rgba(0, 10, 20, 0.16);
+$dark-32: rgba(0, 10, 20, 0.322);
+$white-4: rgba(255, 255, 255, 0.04);
+$white-8: rgba(255, 255, 255, 0.08);
+$white-16: rgba(255, 255, 255, 0.16);
+$white-32: rgba(255, 255, 255, 0.32);
+$white-80: rgba(255, 255, 255, 0.8);
+
+$blue-8: rgba(0, 128, 255, 0.08);
+$blue-16: rgba(0, 128, 255, 0.16);
+$blue-32: rgba(0, 128, 255, 0.32);
+$blue-48: rgba(0, 128, 255, 0.48);
+$blue-50: #ebf5ff;
+$blue-100: #c9e2fc;
+$blue-350: #1ebcf6;
+$blue-450: #0088ff;
+$blue-500: #0080ff;
+$blue-550: #0075eb;
+$blue-750: #3a61cf;
+$blue-800: #2647a6;
+$blue-850: #16348a;
+
+$primary: #0080ff;
+$primary-hover: #3399ff;
+$primary-active: #0066cc;
+$secondary: $black;
+$tertiary: #33dbff;
+$tertiary-hover: #66e4ff;
+$tertiary-active: #13c3e9;
+$quaternary: $white;
+
+$background-color: $white;
+$border-color: #12121229;
+
+$header-height: 3.2rem;
+$footer-height: 5.6rem;
+$subheader-height: 5.6rem;
+$input-height: 4rem;
+$input-inline-height: 3.2rem;
+$input-radius: 0.6rem;
+$card-radius: 1.6rem;
+
+$input-bg: rgba(0, 10, 0, 0.639);
+
+$input-list-bg: #0080ff14;
+$inputBgDisable: #000a140a;
+$inputDefault: #000a1429;
+$inputActive: $blue-450;
+$input-radius: 8px;
+$input-option-list-radius: 12px;
+
+$borderColor: #ddd;
+
+$transition: all 0.3s;
+$shadow:
+    0 0 0 1px rgba(0, 10, 20, 0.16),
+    0 1px 0 0 rgba(0, 10, 20, 0.04);
+$page-shadow-light:
+    0 1px 0 0 rgba(0, 10, 20, 0.04),
+    0 4px 16px 0 rgba(0, 10, 20, 0.08);
+$page-shadow-dark:
+    0 1px 0 0 rgba(0, 10, 20, 0.04),
+    0 4px 16px 0 rgba(255, 255, 255, 0.08);
+
+$box-shadow-dark: 0 -1px 0 0 inset rgba(255, 255, 255, 0.16);
+
+$box-shadow-light: 0 -1px 0 0 inset rgba(0, 10, 20, 0.16);

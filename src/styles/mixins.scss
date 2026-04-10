@@ -1,0 +1,179 @@
+@mixin page-content() {
+  width: 100%;
+  max-width: 112rem;
+  margin: 0 auto;
+}
+
+@mixin font() {
+  font-family: "Helvetica Neue", sans-serif;
+  font-style: normal;
+  letter-spacing: 0rem;
+}
+
+@mixin font-12() {
+  @include font;
+
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+}
+
+@mixin font-14() {
+  @include font;
+
+  font-size: 1.4rem;
+  line-height: 2rem;
+}
+
+@mixin font-16() {
+  @include font;
+
+  font-size: 1.6rem;
+  // letter-spacing: -0.2rem;
+  line-height: 2.4rem;
+}
+
+@mixin font-18() {
+  @include font;
+
+  font-size: 1.8rem;
+  // letter-spacing: -0.28rem;
+  line-height: 2.4rem;
+}
+@mixin font-20() {
+  @include font;
+
+  font-size: 2rem;
+  // letter-spacing: -0.28rem;
+  line-height: 2.4rem;
+}
+
+// H1
+@mixin font-h1() {
+  @include font;
+
+  font-size: 4.8rem;
+  font-weight: 700;
+  line-height: 5.4rem;
+  letter-spacing: -0.06rem;
+}
+
+// H2
+@mixin font-h2() {
+  @include font;
+
+  font-size: 3.4rem;
+  font-weight: 700;
+  line-height: 3.8rem;
+  letter-spacing: -0.038rem;
+}
+
+// H3
+@mixin font-h3() {
+  @include font;
+
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 2.4rem;
+  letter-spacing: -0.02rem;
+}
+
+@mixin font-bold-12() {
+  @include font-12;
+
+  font-weight: 700;
+}
+
+@mixin font-semibold-12() {
+  @include font-12;
+
+  font-weight: 600;
+}
+
+@mixin font-medium-12() {
+  @include font-12;
+
+  font-weight: 500;
+}
+
+@mixin font-regular-12() {
+  @include font-12;
+
+  font-weight: 400;
+}
+
+@mixin font-bold-14() {
+  @include font-14;
+
+  font-weight: 700;
+}
+
+@mixin font-semibold-14() {
+  @include font-14;
+
+  font-weight: 600;
+}
+
+@mixin font-medium-14() {
+  @include font-14;
+
+  font-weight: 500;
+}
+
+@mixin font-regular-14() {
+  @include font-14;
+
+  font-weight: 400;
+}
+
+@mixin font-bold-16() {
+  @include font-16;
+
+  font-weight: 700;
+}
+
+@mixin font-semibold-16() {
+  @include font-16;
+
+  font-weight: 600;
+}
+
+@mixin font-medium-16() {
+  @include font-16;
+
+  font-weight: 500;
+}
+
+@mixin font-regular-16() {
+  @include font-16;
+
+  font-weight: 400;
+}
+
+@mixin font-bold-18() {
+  @include font-18;
+
+  font-weight: 700;
+}
+
+@mixin font-semibold-18() {
+  @include font-18;
+
+  font-weight: 600;
+}
+
+@mixin font-medium-18() {
+  @include font-18;
+
+  font-weight: 500;
+}
+
+@mixin font-regular-18() {
+  @include font-18;
+
+  font-weight: 400;
+}
+@mixin font-regular-20() {
+  @include font-20;
+
+  font-weight: 400;
+}

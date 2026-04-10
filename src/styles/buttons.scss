@@ -1,0 +1,149 @@
+@use "mixins" as mixin;
+@use "variables" as var;
+
+@mixin appButton() {
+  @include mixin.font-medium-16;
+  border-radius: var.$input-radius;
+  padding: 1.2rem 1.6rem;
+
+  transition: var.$transition;
+  &.small {
+    padding: 0 0.8rem;
+  }
+}
+
+.app-button {
+  @include appButton;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+button.primary,
+a.primary {
+  @include appButton;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var.$transition;
+
+  background-color: var.$primary;
+  color: var.$quaternary;
+  --ripple-color: rgba(255, 255, 255, 0.2);
+
+  &:active {
+    background-color: var.$primary-active !important;
+  }
+
+  &:not(:disabled):hover {
+    background-color: var.$primary-hover;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+  &.small {
+    padding: 0.6rem 1rem;
+  }
+}
+
+button.secondary {
+  background-color: none;
+  --ripple-color: rgba(0, 0, 0, 0.12);
+  @include appButton;
+  text-align: center;
+
+  color: var.$secondary;
+  border: 0.1rem solid rgba(20, 20, 20, 0.8);
+
+  border-radius: 0.6rem;
+
+  &.outlined {
+    background-color: rgba(23, 23, 23, 0.04);
+
+    &:active {
+      background-color: rgba(23, 23, 23, 0.04);
+    }
+
+    &:not(:disabled):hover {
+      background-color: rgba(23, 23, 23, 0.2);
+    }
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+a.secondary {
+  background-color: none;
+  --ripple-color: rgba(0, 0, 0, 0.12);
+  @include appButton;
+  text-align: center;
+
+  color: var.$secondary;
+
+  &:active {
+    color: var.$primary-active;
+  }
+
+  &:not(:disabled):hover {
+    color: var.$primary-hover;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+  &.outlined {
+    background-color: rgba(23, 23, 23, 0.04);
+
+    &:active {
+      background-color: rgba(23, 23, 23, 0.04);
+    }
+
+    &:not(:disabled):hover {
+      background-color: rgba(23, 23, 23, 0.2);
+    }
+  }
+}
+button.third,
+a.third {
+  @include appButton;
+  transition: var.$transition;
+
+  background-color: var.$tertiary;
+  color: var.$secondary;
+  border-radius: 2rem;
+  &:active {
+    background-color: var.$tertiary-active !important;
+  }
+
+  &:not(:disabled):hover {
+    background-color: var.$tertiary-hover;
+  }
+
+  &:disabled {
+    opacity: 0.8;
+  }
+}
+
+button.btn-icon {
+  display: flex;
+  gap: 8px;
+
+  &.primary {
+    mat-icon {
+      ::ng-deep svg path {
+        fill: white;
+      }
+    }
+  }
+
+  &.secondary {
+    mat-icon {
+      ::ng-deep svg path {
+        fill: var.$black;
+      }
+    }
+  }
+}
