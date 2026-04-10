@@ -321,7 +321,7 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
     this.isTranslating = true;
     this.navigationService.setTranslating(true);
 
-    /*  this.http
+    this.http
       .post<{
         output: string;
       }>(
@@ -357,8 +357,8 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
             controlPanelParent?.appendChild(controlPanel);
           }
         },
-      }); */
-    setTimeout(() => {
+      });
+    /* setTimeout(() => {
       let res = mockData.output;
       images.forEach((imgHtml, placeholder) => {
         res = res.replace(placeholder, imgHtml);
@@ -379,7 +379,7 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
         this.setupImageClickHandlers();
         this.applyImageOverrides();
       });
-    }, 1000);
+    }, 1000); */
   }
 
   ngOnDestroy(): void {
