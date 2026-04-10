@@ -27,6 +27,12 @@
         }
     }
 }
+
+mat-progress-bar {
+    margin: 8px 0 16px;
+    border-radius: 4px;
+}
+
 :host {
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
@@ -366,6 +372,10 @@
         li {
             margin-bottom: 6px;
             line-height: 1.6;
+            &::before {
+                content: "•";
+                margin-right: 8px;
+            }
         }
 
         ul,
@@ -429,6 +439,15 @@
         border-radius: 4px;
         display: block;
         margin: 8px 0;
+        cursor: pointer;
+        transition:
+            outline 0.2s,
+            box-shadow 0.2s;
+
+        &:hover {
+            outline: 2px solid var(--d2l-color-primary);
+            box-shadow: 0 0 0 4px rgba(244, 98, 0, 0.15);
+        }
     }
 
     // Iframes (video embeds)

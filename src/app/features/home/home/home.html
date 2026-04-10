@@ -151,6 +151,7 @@
                     <div class="control-panel">
                       <mat-select
                         [(ngModel)]="selectedLanguage"
+                        (selectionChange)="onLanguageChange()"
                         class="language-select"
                         placeholder="Language"
                       >
@@ -169,6 +170,7 @@
                       </button>
                     </div>
                   </h2>
+
                   <ul>
                     <li>
                       We are introducing new APIs to manage Intelligent Agents
@@ -996,17 +998,17 @@
                       sizes="100vw"
                       class="embedImage-img importedEmbed-img"
                     /><br /><img
-                      src="https://../../Resources/Images/DA-target-child-org-unit-announcement-FR-CA"
+                      src="https://us.v-cdn.net/6036482/uploads/5VOFZG1KTEF7/da-target-child-org-unit-announcement-en-us.png"
                       alt=""
                       loading="lazy"
                       srcset="
-                        https://d2l.vanillacommunities.com../cdn-cgi/image/quality=80,format=auto,fit=scale-down,height=300,width=300/../Resources/Images/DA-target-child-org-unit-announcement-FR-CA    300w,
-                        https://d2l.vanillacommunities.com../cdn-cgi/image/quality=80,format=auto,fit=scale-down,height=600,width=600/../Resources/Images/DA-target-child-org-unit-announcement-FR-CA    600w,
-                        https://d2l.vanillacommunities.com../cdn-cgi/image/quality=80,format=auto,fit=scale-down,height=800,width=800/../Resources/Images/DA-target-child-org-unit-announcement-FR-CA    800w,
-                        https://d2l.vanillacommunities.com../cdn-cgi/image/quality=80,format=auto,fit=scale-down,height=1200,width=1200/../Resources/Images/DA-target-child-org-unit-announcement-FR-CA 1200w,
-                        https://d2l.vanillacommunities.com../cdn-cgi/image/quality=80,format=auto,fit=scale-down,height=1600,width=1600/../Resources/Images/DA-target-child-org-unit-announcement-FR-CA 1600w,
-                        https://d2l.vanillacommunities.com../cdn-cgi/image/quality=80,format=auto,fit=scale-down,height=2000,width=2000/../Resources/Images/DA-target-child-org-unit-announcement-FR-CA 2000w,
-                        ../../Resources/Images/DA-target-child-org-unit-announcement-FR-CA
+                        https://us.v-cdn.net/cdn-cgi/image/quality=80,format=auto,fit=scale-down,height=300,width=300/6036482/uploads/5VOFZG1KTEF7/da-target-child-org-unit-announcement-en-us.png    300w,
+                        https://us.v-cdn.net/cdn-cgi/image/quality=80,format=auto,fit=scale-down,height=600,width=600/6036482/uploads/5VOFZG1KTEF7/da-target-child-org-unit-announcement-en-us.png    600w,
+                        https://us.v-cdn.net/cdn-cgi/image/quality=80,format=auto,fit=scale-down,height=800,width=800/6036482/uploads/5VOFZG1KTEF7/da-target-child-org-unit-announcement-en-us.png    800w,
+                        https://us.v-cdn.net/cdn-cgi/image/quality=80,format=auto,fit=scale-down,height=1200,width=1200/6036482/uploads/5VOFZG1KTEF7/da-target-child-org-unit-announcement-en-us.png 1200w,
+                        https://us.v-cdn.net/cdn-cgi/image/quality=80,format=auto,fit=scale-down,height=1600,width=1600/6036482/uploads/5VOFZG1KTEF7/da-target-child-org-unit-announcement-en-us.png 1600w,
+                        https://us.v-cdn.net/cdn-cgi/image/quality=80,format=auto,fit=scale-down,height=2000,width=2000/6036482/uploads/5VOFZG1KTEF7/da-target-child-org-unit-announcement-en-us.png 2000w,
+                        https://us.v-cdn.net/6036482/uploads/5VOFZG1KTEF7/da-target-child-org-unit-announcement-en-us.png
                       "
                       sizes="100vw"
                       class="embedImage-img importedEmbed-img"
@@ -1301,3 +1303,11 @@
     </div>
   </div>
 </div>
+
+<input
+  type="file"
+  #imageUpload
+  accept="image/*"
+  style="display: none"
+  (change)="onImageFileSelected($event)"
+/>

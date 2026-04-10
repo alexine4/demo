@@ -15,11 +15,13 @@ export type SectionType =
 export class NavigationService {
   private activeSectionSubject = new BehaviorSubject<SectionType>('home');
   public activeSection$ = this.activeSectionSubject.asObservable();
+  private isTranslatingSubject = new BehaviorSubject<boolean>(false);
+  public isTranslating$ = this.isTranslatingSubject.asObservable();
   private isNavigating = false;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Object,
   ) {}
 
   setActiveSection(section: SectionType): void {
@@ -28,6 +30,10 @@ export class NavigationService {
 
   getCurrentSection(): SectionType {
     return this.activeSectionSubject.value;
+  }
+
+  setTranslating(value: boolean): void {
+    this.isTranslatingSubject.next(value);
   }
 
   navigateToSection(section: SectionType): void {
