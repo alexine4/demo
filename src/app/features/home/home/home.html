@@ -160,7 +160,13 @@
                         >
                         }
                       </mat-select>
-                      <button class="primary small">Translate</button>
+                      <button
+                        class="primary small"
+                        (click)="translate()"
+                        [disabled]="isTranslating"
+                      >
+                        {{ isTranslating ? 'Translating...' : 'Translate' }}
+                      </button>
                     </div>
                   </h2>
                   <ul>
