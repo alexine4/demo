@@ -73,6 +73,7 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
 
   onLanguageChange(): void {
     this.applyImageOverrides();
+    this.updateOverlayVisibility();
   }
 
   onImageFileSelected(event: Event): void {
@@ -166,15 +167,39 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
       if (!img.dataset['originalSrc']) {
         img.dataset['originalSrc'] = img.src;
       }
-      img.style.cursor = 'pointer';
-      img.title =
-        'Click to upload a replacement image for the selected language';
-      img.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        this.clickedImage = img;
-        this.imageUploadInput.nativeElement.click();
-      });
+
+      // Wrap image in overlay container if not already wrapped
+      if (!img.parentElement?.classList.contains('img-overlay-wrap')) {
+        const wrapper = document.createElement('div');
+        wrapper.classList.add('img-overlay-wrap');
+        img.parentElement!.insertBefore(wrapper, img);
+        wrapper.appendChild(img);
+
+        const overlay = document.createElement('div');
+        overlay.classList.add('img-overlay-hint');
+        overlay.textContent = 'Click to replace image for this language';
+        wrapper.appendChild(overlay);
+
+        wrapper.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          this.clickedImage = img;
+          this.imageUploadInput.nativeElement.click();
+        });
+      }
+    });
+
+    this.updateOverlayVisibility();
+  }
+
+  private updateOverlayVisibility(): void {
+    const contentEl: HTMLElement =
+      this.el.nativeElement.querySelector('.userContent');
+    if (!contentEl) return;
+
+    const showOverlay = this.selectedLanguage !== 'en';
+    contentEl.querySelectorAll('.img-overlay-wrap').forEach((wrap) => {
+      wrap.classList.toggle('active', showOverlay);
     });
   }
 
@@ -296,7 +321,7 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
     this.isTranslating = true;
     this.navigationService.setTranslating(true);
 
-    this.http
+    /*  this.http
       .post<{
         output: string;
       }>(
@@ -332,8 +357,8 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
             controlPanelParent?.appendChild(controlPanel);
           }
         },
-      });
-    /*     setTimeout(() => {
+      }); */
+    setTimeout(() => {
       let res = mockData.output;
       images.forEach((imgHtml, placeholder) => {
         res = res.replace(placeholder, imgHtml);
@@ -354,7 +379,7 @@ export class Home implements OnInit, OnDestroy, AfterViewInit {
         this.setupImageClickHandlers();
         this.applyImageOverrides();
       });
-    }, 1000); */
+    }, 1000);
   }
 
   ngOnDestroy(): void {

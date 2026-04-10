@@ -33,6 +33,36 @@ mat-progress-bar {
     border-radius: 4px;
 }
 
+:host ::ng-deep .img-overlay-wrap {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+
+    img {
+        display: block;
+    }
+
+    .img-overlay-hint {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.55);
+        color: #fff;
+        font-size: 14px;
+        font-weight: 500;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+        border-radius: 4px;
+    }
+
+    &.active:hover .img-overlay-hint {
+        opacity: 1;
+    }
+}
+
 :host {
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
@@ -443,11 +473,6 @@ mat-progress-bar {
         transition:
             outline 0.2s,
             box-shadow 0.2s;
-
-        &:hover {
-            outline: 2px solid var(--d2l-color-primary);
-            box-shadow: 0 0 0 4px rgba(244, 98, 0, 0.15);
-        }
     }
 
     // Iframes (video embeds)

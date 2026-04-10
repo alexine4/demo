@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "snap-audit-ai": {
+    "d2l-translate-demo": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -26,14 +26,9 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "styles": ["src/styles.scss"],
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "node_modules/",
-                "src/styles/"
-              ]
+              "includePaths": ["node_modules/", "src/styles/"]
             },
             "server": "src/main.server.ts",
             "outputMode": "server",
@@ -52,8 +47,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "42kB",
+                  "maximumError": "64kB"
                 }
               ],
               "outputHashing": "all"
@@ -67,8 +62,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "42kB",
+                  "maximumError": "64kB"
                 }
               ],
               "outputHashing": "none",
@@ -86,8 +81,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "42kB",
+                  "maximumError": "64kB"
                 }
               ],
               "outputHashing": "none",
@@ -112,10 +107,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "snap-audit-ai:build:production"
+              "buildTarget": "d2l-translate-demo:build:production"
             },
             "development": {
-              "buildTarget": "snap-audit-ai:build:development"
+              "buildTarget": "d2l-translate-demo:build:development"
             }
           },
           "defaultConfiguration": "development"
